@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-const { API_URL } = import.meta.env
+const { VITE_API_URL } = import.meta.env
 
 export const GlobalContext = createContext();
 
@@ -8,7 +8,7 @@ export function GlobalProvider({ children }) {
   const [tasks, setTasks] = useState([])
 
   useEffect(() => {
-    fetch(`${API_URL}/tasks`)
+    fetch(`${VITE_API_URL}/tasks`)
       .then(res => res.json())
       .then(data => setTasks(data))
       .catch(error => console.error(error))
