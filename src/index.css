@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: roboto, sans-serif;
 }
 
 header {
@@ -19,8 +20,9 @@ header nav {
 }
 
 header nav a {
-  color: rgb(114, 114, 68);
+  color: rgb(51, 51, 28);
   text-decoration: none;
+  font-size: 20px;
 }
 
 .title-page {
@@ -30,6 +32,6 @@ header nav a {
 }
 
 .active {
-  color: rgb(173, 173, 154);
+  color: rgb(112, 112, 90);
   text-decoration: none;
 }
