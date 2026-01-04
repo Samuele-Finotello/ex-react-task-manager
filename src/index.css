@@ -26,10 +26,36 @@ header nav a {
   font-weight: 500;
 }
 
-.title-page {
+tr,
+th,
+td {
+  text-align: center;
+  padding: 10px 20px;
+  background-color: beige;
+  border: 2px, solid, black;
+}
+
+td.todo {
+  background-color: rgb(255, 133, 133);
+}
+
+td.doing {
+  background-color: rgb(255, 255, 133);
+}
+
+td.done {
+  background-color: rgb(112, 193, 112);
+}
+
+.table-task {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  margin-top: 50px;
+}
+
+.title-page {
+  text-align: center;
+  margin: 30px 0;
 }
 
 .active {
