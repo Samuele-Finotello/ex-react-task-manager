@@ -24,5 +24,5 @@ export default function useTasks() {
 
   }
 
-  return { tasks }
+  return { tasks, addTask, removeTask, updateTask }
 }
