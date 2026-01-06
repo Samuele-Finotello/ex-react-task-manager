@@ -5,6 +5,8 @@
   font-family: roboto, sans-serif;
 }
 
+/* -------------------------- HEADER -------------------------- */
+
 header {
   display: flex;
   align-items: center;
@@ -25,6 +27,15 @@ header nav a {
   font-size: 20px;
   font-weight: 500;
 }
+
+.active {
+  color: rgb(112, 112, 90);
+  text-decoration: none;
+}
+
+/* -------------------------- PAGE TASKS LIST -------------------------- */
+
+/* ------------- TABLE ------------- */
 
 tr,
 th,
@@ -53,12 +64,40 @@ td.done {
   margin-top: 50px;
 }
 
+/* -------------------------- PAGE ADD TASK -------------------------- */
+
+#add-task {
+  display: flex;
+  flex-direction: column;
+}
+
+#add-task input,
+select,
+textarea {
+  padding: 5px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+label h3 {
+  margin-top: 20px;
+}
+
+/* -------------------------- GENERAL CLASSES -------------------------- */
+
 .title-page {
   text-align: center;
   margin: 30px 0;
 }
 
-.active {
-  color: rgb(112, 112, 90);
-  text-decoration: none;
+.wd-400 {
+  width: 400px;
+}
+
+.wd-150 {
+  width: 150px;
+}
+
+.h-100 {
+  height: 100px;
 }
