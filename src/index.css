@@ -105,6 +105,28 @@ label h3 {
   font-size: 20px;
 }
 
+/* -------------------------- MODAL -------------------------- */
+
+.modal-overlay {
+  position: fixed;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  background-color: beige;
+  color: black;
+}
+
+.selection {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 /* -------------------------- GENERAL CLASSES -------------------------- */
 
 .title-page {
