@@ -1,6 +1,9 @@
-import { useState, useRef, useMemo } from "react"
+import { useState, useRef, useMemo, useContext } from "react"
+import { GlobalContext } from "../context/GlobalContext"
 
 export default function AddTask() {
+
+  const { addTask } = useContext(GlobalContext)
 
   const [taskTitle, setTaskTitle] = useState('')
   const descriptionRef = useRef()
@@ -18,7 +21,7 @@ export default function AddTask() {
     return '';
   }, [taskTitle])
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
     if (checkTitle !== '') return;
@@ -29,16 +32,24 @@ export default function AddTask() {
       status: statusRef.current.value
     }
 
-    setTaskTitle('');
-    descriptionRef.current.value = '';
-    statusRef.current.value = 'To do';
+    try {
+      await addTask(newTask)
+      alert('Task creata con successo')
+      setTaskTitle('');
+      descriptionRef.current.value = '';
+      statusRef.current.value = 'To do';
+    } catch (error) {
+      alert(error.message)
+    }
 
     console.log(`Task aggiunta: `, newTask)
   }
 
   return (
-    <div className="title-page">
-      <h1>Aggiungi Task</h1>
+    <>
+      <div className="title-page">
+        <h1>Aggiungi Task</h1>
+      </div>
       <form id="add-task" onSubmit={handleSubmit}>
         <label>
           <h3>Nome Task</h3>
@@ -59,6 +70,6 @@ export default function AddTask() {
         </label>
         <button type="submit" className="wd-150" disabled={checkTitle}>Aggiungi Task</button>
       </form>
-    </div>
+    </>
   )
 }
