@@ -46,15 +46,6 @@ td {
   border: 2px, solid, black;
 }
 
-.link {
-  text-decoration: none;
-  color: black;
-}
-
-.link:hover {
-  color: rgb(85, 85, 85);
-}
-
 td.todo {
   background-color: rgb(255, 133, 133);
 }
@@ -73,6 +64,15 @@ td.done {
   margin: 50px 0;
 }
 
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.link:hover {
+  color: rgb(85, 85, 85);
+}
+
 /* -------------------------- PAGE ADD TASK -------------------------- */
 
 #add-task {
@@ -84,16 +84,25 @@ td.done {
 }
 
 #add-task input,
-select,
-textarea,
+#add-task select,
+#add-task textarea,
 button {
   padding: 5px;
   border-radius: 10px;
   margin-top: 20px;
+  font-size: 15px;
 }
 
 label h3 {
   margin-top: 20px;
+}
+
+/* -------------------------- PAGE DETAIL TASK -------------------------- */
+
+.detail-page {
+  text-align: center;
+  line-height: 30px;
+  font-size: 20px;
 }
 
 /* -------------------------- GENERAL CLASSES -------------------------- */
