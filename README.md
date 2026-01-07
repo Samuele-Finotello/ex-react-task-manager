@@ -103,6 +103,7 @@ const symbols = "!@#$%^&*()-_=+[]{}|;:'\\",.<>?/`~";
 Gestione del Submit del Form:
 
 Al click del bottone "Aggiungi Task", il form deve SOLO stampare in console l’oggetto task con i valori inseriti (NON deve ancora essere inviata la richiesta all’API).
+
 📌 Milestone 6 - Integrazione dell'API per Aggiungere un Task (POST)
 Collegare il form di AddTask all'API e completare la funzione addTask in useTasks().
 

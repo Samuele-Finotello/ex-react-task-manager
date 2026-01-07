@@ -18,10 +18,28 @@ export default function AddTask() {
     return '';
   }, [taskTitle])
 
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    if (checkTitle !== '') return;
+
+    const newTask = {
+      title: taskTitle.trim(),
+      description: descriptionRef.current.value,
+      status: statusRef.current.value
+    }
+
+    setTaskTitle('');
+    descriptionRef.current.value = '';
+    statusRef.current.value = 'To do';
+
+    console.log(`Task aggiunta: `, newTask)
+  }
+
   return (
     <div className="title-page">
       <h1>Aggiungi Task</h1>
-      <form id="add-task">
+      <form id="add-task" onSubmit={handleSubmit}>
         <label>
           <h3>Nome Task</h3>
           <input className="wd-400" type="text" value={taskTitle} onChange={e => setTaskTitle(e.target.value)} placeholder="Aggiungi Task" />
@@ -39,6 +57,7 @@ export default function AddTask() {
             ))}
           </select>
         </label>
+        <button type="submit" className="wd-150" disabled={checkTitle}>Aggiungi Task</button>
       </form>
     </div>
   )
