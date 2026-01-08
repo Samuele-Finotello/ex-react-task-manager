@@ -6,7 +6,7 @@ export default function EditTaskModal({ show, onClose, task, onSave }) {
   const editFormRef = useRef()
 
   const changeEditedTask = (key, event) => {
-    setEditedTask(prev => [{ ...prev, [key]: event.target.value }])
+    setEditedTask(prev => ({ ...prev, [key]: event.target.value }))
   }
 
   const handleSubmit = e => {

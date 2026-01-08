@@ -151,3 +151,11 @@ label h3 {
 .h-100 {
   height: 100px;
 }
+
+.me-10 {
+  margin-right: 10px;
+}
+
+.ms-10 {
+  margin-left: 10px;
+}
