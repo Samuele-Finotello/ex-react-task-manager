@@ -50,7 +50,7 @@ export default function AddTask() {
       <div className="title-page">
         <h1>Aggiungi Task</h1>
       </div>
-      <form id="add-task" onSubmit={handleSubmit}>
+      <form className="add-task" onSubmit={handleSubmit}>
         <label>
           <h3>Nome Task</h3>
           <input className="wd-400" type="text" value={taskTitle} onChange={e => setTaskTitle(e.target.value)} placeholder="Aggiungi Task" />

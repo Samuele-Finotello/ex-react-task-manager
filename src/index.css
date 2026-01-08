@@ -75,7 +75,7 @@ td.done {
 
 /* -------------------------- PAGE ADD TASK -------------------------- */
 
-#add-task {
+.add-task {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,9 +83,9 @@ td.done {
   margin-bottom: 50px;
 }
 
-#add-task input,
-#add-task select,
-#add-task textarea,
+.add-task input,
+.add-task select,
+.add-task textarea,
 button {
   padding: 5px;
   border-radius: 10px;
