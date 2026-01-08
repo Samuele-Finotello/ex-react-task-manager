@@ -1,12 +1,12 @@
-import { useContext } from "react"
+import { useState, useContext } from "react"
 import { GlobalContext } from "../context/GlobalContext"
 import TaskRow from "../components/TaskRow"
 
 export default function TaskList() {
 
   const { tasks } = useContext(GlobalContext)
-
-  console.log(tasks)
+  const [sortBy, setSortBy] = useState('createdAt')
+  const [sortOrder, setSortOrder] = useState(1)
 
   return (
     <>
