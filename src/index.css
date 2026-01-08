@@ -46,6 +46,10 @@ td {
   border: 2px, solid, black;
 }
 
+th:hover {
+  cursor: pointer;
+}
+
 td.todo {
   background-color: rgb(255, 133, 133);
 }

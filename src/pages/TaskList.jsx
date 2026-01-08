@@ -8,6 +8,18 @@ export default function TaskList() {
   const [sortBy, setSortBy] = useState('createdAt')
   const [sortOrder, setSortOrder] = useState(1)
 
+  const handleSort = field => {
+    if (sortBy === field) {
+      setSortOrder(prev => prev * -1)
+    }
+    else {
+      setSortBy(field)
+      setSortOrder(1)
+    }
+  }
+
+  const sortIcon = sortOrder === 1 ? '⮟' : '⮝'
+
   return (
     <>
       <div className="title-page">
@@ -17,9 +29,9 @@ export default function TaskList() {
         <table>
           <thead>
             <tr>
-              <th>Nome</th>
-              <th>Stato</th>
-              <th>Data di Creazione</th>
+              <th onClick={() => handleSort('title')} >Nome {sortBy === 'title' && sortIcon}</th>
+              <th onClick={() => handleSort('status')} >Stato {sortBy === 'status' && sortIcon}</th>
+              <th onClick={() => handleSort('createdAt')} >Data di Creazione {sortBy === 'createdAt' && sortIcon}</th>
             </tr>
           </thead>
           <tbody>
