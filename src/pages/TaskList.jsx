@@ -19,6 +19,7 @@ export default function TaskList() {
   const [sortBy, setSortBy] = useState('createdAt')
   const [sortOrder, setSortOrder] = useState(1)
   const [searchQuery, setSearchQuery] = useState('')
+  const [selectedTaskIds, setSelectedTaskIds] = useState([])
 
   const debouncedSetSearchQuery = useCallback(debounce(setSearchQuery, 500), [])
 
@@ -59,6 +60,15 @@ export default function TaskList() {
 
   const sortIcon = sortOrder === 1 ? '⮟' : '⮝';
 
+  const toggleSelection = taskId => {
+    if (selectedTaskIds.includes(taskId)) {
+      setSelectedTaskIds(prev => prev.filter(id => id !== taskId))
+    }
+    else {
+      setSelectedTaskIds(prev => [...prev, taskId])
+    }
+  }
+
   return (
     <>
       <div className="title-page">
@@ -83,7 +93,12 @@ export default function TaskList() {
             <tbody>
               {sortedTask.map(task => {
                 return (
-                  <TaskRow key={task.id} task={task} />
+                  <TaskRow
+                    key={task.id}
+                    task={task}
+                    checked={selectedTaskIds.includes(task.id)}
+                    onToggle={toggleSelection}
+                  />
                 )
               })}
             </tbody>
