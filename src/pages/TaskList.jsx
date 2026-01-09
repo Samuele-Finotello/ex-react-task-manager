@@ -1,6 +1,17 @@
-import { useState, useContext, useMemo } from "react"
+import { useState, useContext, useMemo, useCallback } from "react"
 import { GlobalContext } from "../context/GlobalContext"
 import TaskRow from "../components/TaskRow"
+
+function debounce(callback, delay) {
+  let timer;
+
+  return (value) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      callback(value)
+    }, delay)
+  }
+}
 
 export default function TaskList() {
 
@@ -8,6 +19,8 @@ export default function TaskList() {
   const [sortBy, setSortBy] = useState('createdAt')
   const [sortOrder, setSortOrder] = useState(1)
   const [searchQuery, setSearchQuery] = useState('')
+
+  const debouncedSetSearchQuery = useCallback(debounce(setSearchQuery, 500), [])
 
   const handleSort = field => {
     if (sortBy === field) {
@@ -53,8 +66,7 @@ export default function TaskList() {
         <input
           type="text"
           placeholder="Cerca..."
-          value={searchQuery}
-          onChange={e => setSearchQuery(e.target.value)}
+          onChange={e => debouncedSetSearchQuery(e.target.value)}
         />
       </div>
       {sortedTask.length === 0 ? <h2 className="title-page">Nessuna Task trovata</h2> :
