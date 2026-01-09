@@ -64,7 +64,8 @@ td.done {
 
 .table-task {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin: 50px 0;
 }
 
@@ -75,6 +76,11 @@ td.done {
 
 .link:hover {
   color: rgb(85, 85, 85);
+}
+
+.table-task div button {
+  margin: 0;
+  margin-bottom: 10px;
 }
 
 /* -------------------------- PAGE ADD TASK -------------------------- */

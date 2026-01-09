@@ -15,7 +15,7 @@ function debounce(callback, delay) {
 
 export default function TaskList() {
 
-  const { tasks } = useContext(GlobalContext)
+  const { tasks, removeMultipleTasks } = useContext(GlobalContext)
   const [sortBy, setSortBy] = useState('createdAt')
   const [sortOrder, setSortOrder] = useState(1)
   const [searchQuery, setSearchQuery] = useState('')
@@ -69,6 +69,10 @@ export default function TaskList() {
     }
   }
 
+  const handleDeleteSelected = () => {
+    removeMultipleTasks(selectedTaskIds)
+  }
+
   return (
     <>
       <div className="title-page">
@@ -81,6 +85,9 @@ export default function TaskList() {
       </div>
       {sortedTask.length === 0 ? <h2 className="title-page">Nessuna Task trovata</h2> :
         <div className="table-task">
+          <div>{selectedTaskIds.length > 0 && (
+            <button onClick={handleDeleteSelected}>Elimina Task selezionate</button>
+          )}</div>
           <table>
             <thead>
               <tr>
