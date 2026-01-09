@@ -7,6 +7,7 @@ export default function TaskList() {
   const { tasks } = useContext(GlobalContext)
   const [sortBy, setSortBy] = useState('createdAt')
   const [sortOrder, setSortOrder] = useState(1)
+  const [searchQuery, setSearchQuery] = useState('')
 
   const handleSort = field => {
     if (sortBy === field) {
@@ -47,6 +48,12 @@ export default function TaskList() {
     <>
       <div className="title-page">
         <h1>Lista Tasks</h1>
+        <input
+          type="text"
+          placeholder="Cerca..."
+          value={searchQuery}
+          onChange={e => setSearchQuery(e.target.value)}
+        />
       </div>
       <div className="table-task">
         <table>

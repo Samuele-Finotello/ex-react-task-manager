@@ -87,9 +87,9 @@ td.done {
   margin-bottom: 50px;
 }
 
-.add-task input,
 .add-task select,
 .add-task textarea,
+input,
 button {
   padding: 5px;
   border-radius: 10px;

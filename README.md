@@ -270,7 +270,6 @@ Applicare sortOrder per definire se l’ordine è crescente o decrescente.
 📌 Milestone 12 - Ricerca dei Task con Debounce
 Aggiungere un campo di ricerca che permette all’utente di filtrare i task in base al nome, ottimizzando le prestazioni con debounce.
 
-
 Creare un input di ricerca controllato
 Aggiungere un input di ricerca controllato in TaskList.jsx sopra la tabella, in modo che l’utente possa digitare per cercare un task.
 Creare uno stato searchQuery (useState) per memorizzare il valore dell'input.
