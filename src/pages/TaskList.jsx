@@ -74,6 +74,7 @@ export default function TaskList() {
           <table>
             <thead>
               <tr>
+                <th></th>
                 <th onClick={() => handleSort('title')} >Nome {sortBy === 'title' && sortIcon}</th>
                 <th onClick={() => handleSort('status')} >Stato {sortBy === 'status' && sortIcon}</th>
                 <th onClick={() => handleSort('createdAt')} >Data di Creazione {sortBy === 'createdAt' && sortIcon}</th>
