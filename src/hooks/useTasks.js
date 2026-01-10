@@ -1,14 +1,15 @@
-import { useState, useEffect } from "react";
+import { useReducer, useEffect } from "react";
+import tasksReducer from "../reducers/tasksReducer";
 const { VITE_API_URL } = import.meta.env
 
 export default function useTasks() {
 
-  const [tasks, setTasks] = useState([])
+  const [tasks, dispatchTasks] = useReducer(tasksReducer, [])
 
   useEffect(() => {
     fetch(`${VITE_API_URL}/tasks`)
       .then(res => res.json())
-      .then(data => setTasks(data))
+      .then(data => dispatchTasks({ type: 'LOAD_TASKS', payload: data }))
       .catch(error => console.error(error))
   }, [])
 
@@ -27,7 +28,7 @@ export default function useTasks() {
 
     if (!success) throw new Error(message)
 
-    setTasks(prev => [...prev, task])
+    dispatchTasks({ type: 'ADD_TASK', payload: task })
   }
 
   const removeTask = async id => {
@@ -38,7 +39,7 @@ export default function useTasks() {
 
     if (!success) throw new Error(message)
 
-    setTasks(prev => prev.filter(task => task.id !== id))
+    dispatchTasks({ type: 'REMOVE_TASK', payload: id })
   }
 
   const removeMultipleTasks = async taskIds => {
@@ -66,9 +67,7 @@ export default function useTasks() {
     })
 
     if (fulFilledDeletions.length > 0) {
-      setTasks(prev => prev.filter(t => (
-        !fulFilledDeletions.includes(t.id)
-      )))
+      dispatchTasks({ type: 'REMOVE_MULTIPLE_TASKS', payload: fulFilledDeletions })
     }
 
     if (rejectedDeletions.length > 0) {
@@ -91,7 +90,7 @@ export default function useTasks() {
 
     if (!success) throw new Error(message)
 
-    setTasks(prev => prev.map(oldTask => oldTask.id === task.id ? task : oldTask))
+    dispatchTasks({ type: 'UPDATE_TASK', payload: task })
   }
 
   return { tasks, addTask, removeTask, removeMultipleTasks, updateTask }
