@@ -13,6 +13,11 @@ export default function useTasks() {
   }, [])
 
   const addTask = async newTask => {
+    const taskExist = tasks.some(task => task.title.toLowerCase() === newTask.title.toLowerCase())
+    if (taskExist) {
+      throw new Error('Esiste già una task con questo nome')
+    }
+
     const response = await fetch(`${VITE_API_URL}/tasks`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -72,6 +77,11 @@ export default function useTasks() {
   }
 
   const updateTask = async updatedTask => {
+    const taskSameId = tasks.find(task => task.title.toLowerCase() === updatedTask.title.toLowerCase())
+    if (taskSameId && taskSameId.id !== updatedTask.id) {
+      throw new Error('Esiste già una task con questo nome ')
+    }
+
     const response = await fetch(`${VITE_API_URL}/tasks/${updatedTask.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },

@@ -41,8 +41,6 @@ export default function AddTask() {
     } catch (error) {
       alert(error.message)
     }
-
-    console.log(`Task aggiunta: `, newTask)
   }
 
   return (

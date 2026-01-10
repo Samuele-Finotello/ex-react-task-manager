@@ -68,7 +68,6 @@ export default function TaskList() {
       setSelectedTaskIds(prev => [...prev, taskId])
     }
   }
-  console.log(selectedTaskIds)
 
   const handleDeleteSelected = async () => {
     try {
