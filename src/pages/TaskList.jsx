@@ -34,7 +34,7 @@ export default function TaskList() {
   }
 
   const sortedTask = useMemo(() => {
-    return [...tasks]
+    return tasks
       .filter(task => task.title.toLowerCase().includes(searchQuery.toLowerCase()))
       .sort((a, b) => {
         let comparison;
@@ -68,9 +68,17 @@ export default function TaskList() {
       setSelectedTaskIds(prev => [...prev, taskId])
     }
   }
+  console.log(selectedTaskIds)
 
-  const handleDeleteSelected = () => {
-    removeMultipleTasks(selectedTaskIds)
+  const handleDeleteSelected = async () => {
+    try {
+      await removeMultipleTasks(selectedTaskIds)
+      alert('Task eliminate con successo')
+      setSelectedTaskIds([])
+    } catch (error) {
+      console.error(error)
+      alert(error.message)
+    }
   }
 
   return (
@@ -112,7 +120,6 @@ export default function TaskList() {
           </table>
         </div>
       }
-
     </>
   )
 }
